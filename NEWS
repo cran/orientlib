@@ -1,0 +1,37 @@
+Release history for orientlib:
+
+Version 0.7.1
+
+        Mods for compatibility with R 1.9
+	
+Version 0.7
+
+	Modifications to coincide with JSS paper
+
+Version 0.4
+
+	First release to CRAN
+
+Version 0.2
+
+	Added mean and weighted.mean.
+
+ 	Made orientation descend from vector.
+
+	Added [[ methods.
+
+	Changed default look of boats.
+
+	Made rotmatrix etc. into conversion functions between
+	orientation types.
+	
+	Added eulerzxz class.
+
+	Added various parameters to boat3d.
+
+	Added orientlm regression function plus transpose t() method.
+
+
+Version 0.1
+
+	First release.

@@ -1,3 +1,5 @@
+require(methods)
+if (R.Version()$minor >= 9.0 || R.Version()$major > 1) require(stats)
 
 # The orientation class is an abstract class; the different representations
 # below descend from it

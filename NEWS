@@ -8,8 +8,7 @@ Version 0.8.1
 
 Version 0.8
 
-	Added namespace to main branch. This breaks R 1.8.x compatibility, so not
-	done in this version. 
+	Added namespace. This breaks R 1.8.x compatibility; sorry! 
 
 Version 0.7.1
 
@@ -46,3 +45,4 @@ Version 0.2
 Version 0.1
 
 	First release.
+

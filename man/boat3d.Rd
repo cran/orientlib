@@ -14,7 +14,7 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
   \item{x, y, z}{ Coordinates where boats should be shown. }
   \item{scale}{ Size of boats }
   \item{col}{ Colour of boats }
-  \item{add}{ If \code{FALSE}, then clear display first.  }
+  \item{add}{ Context in which to continue drawing, or \code{FALSE} to clear first.  }
   \item{box}{ Whether to draw a box around the plot }
   \item{axes}{ Whether to draw axes }
   \item{graphics}{ Which graphics package to use }
@@ -47,7 +47,8 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
 \value{
   A \code{\link[djmrgl]{djmrgl}} handle for the graphics display, a current
   plot number for \code{\link[rgl]{rgl}}, or a \code{\link[scatterplot3d]{scatterplot3d}} 
-  drawing context.
+  drawing context.  In any case, an attribute named \code{graphics} is added
+  to indicate the drawing device type.
 }
 \author{ Duncan Murdoch }
 \note{ Requires the \code{\link[djmrgl]{djmrgl}}, \code{\link[rgl]{rgl}} or 
@@ -56,19 +57,23 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
 \examples{
 x <- eulerzyx(psi=c(0,pi/4,0,0), theta=c(0,0,pi/4,0), phi=c(0,0,0,pi/4))
 
-# Need to test for existence of 3D renderer
+# Need a 3D renderer; assume scatterplot3d, but others could be used
 
-if (length(.find.package('djmrgl', quiet = TRUE))) {
-    boat3d(x, 0:3, axes = FALSE)
-    axis3d('yz',at=0:3,labels=c('Id','z','y','x'))
-} else if (length(.find.package('rgl', quiet = TRUE))) {
-    boat3d(x, 0:3, axes = FALSE, graphics = 'rgl')
-    rgl.bbox(xat=0:3,xlab=c('Id','z','y','x'),yat=1,zat=1,color='grey')  
-}
-if (length(.find.package('scatterplot3d', quiet = TRUE))) {
-    s <- boat3d(x, 0:3, axes = FALSE, graphics = 'scatterplot3d')
-    text(s$xyz.convert(0:3, rep(-0.5,4), rep(-0.5,4)), 
-         label = c('Id','z','y','x'))
+s <- boat3d(x, 0:3, axes = FALSE, graphics = 'scatterplot3d')
+text(s$xyz.convert(0:3, rep(-0.5,4), rep(-0.5,4)), 
+     label = c('Id','z','y','x'))
+         
+\dontrun{
+
+# if the djmrgl package is loaded, this code will work
+         
+boat3d(x, 0:3, axes = FALSE)
+axis3d('yz',at=0:3,labels=c('Id','z','y','x'))
+
+# if the rgl package is loaded, this code will work
+
+boat3d(x, 0:3, axes = FALSE, graphics = 'rgl')
+rgl.bbox(xat=0:3,xlab=c('Id','z','y','x'),yat=1,zat=1,color='grey')  
 }
 }
 \keyword{ hplot }% at least one, from doc/KEYWORDS

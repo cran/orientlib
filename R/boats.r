@@ -1,6 +1,7 @@
 boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0.25,
                    col = 'red', add = FALSE, box = FALSE, axes = TRUE, 
                    graphics = c('djmrgl', 'rgl', 'scatterplot3d'), ...) {
+    if (!missing(add) && missing(graphics)) graphics <- attr(add, 'graphics')
     orientation <- as(orientation, 'rotmatrix')
     len <- length(orientation)
     y <- rep(y, length=len)
@@ -48,6 +49,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	}
 	class(g) <- 'obj3d'
 	bringToTop3d(handle = handle)
+	attr(handle, 'graphics') <- 'djmrgl'
 	invisible(handle)
     } else if (graphics == 'rgl') {
 	if (is.logical(add)) {
@@ -85,8 +87,9 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    rgl.quads(newv[1,],newv[2,],newv[3,],col=col[i])
 	}
 	if (axes) rgl.bbox(col='grey')
-
-	invisible(rgl.cur())
+	context <- rgl.cur()
+	attr(context, 'graphics') <- 'rgl'
+	invisible(context)
     }
     else if (graphics == 'scatterplot3d') {
 	tindices <- rep(c(1:3,1), 4) + rep(3*(0:3), each = 4)
@@ -125,6 +128,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    # draw quads
 	    for (j in 1:2) pfun(t(p[,(nv*(i-1)+5*(j-1)+17):(nv*(i-1)+5*j+16)]), type='l', col=col[i])
 	}
+	attr(splot, 'graphics') <- 'scatterplot3d'
 	invisible(splot)
     } else
     	stop('Need djmrgl, rgl or scatterplot3d')

@@ -1,5 +1,16 @@
 Release history for orientlib:
 
+Version 0.8.1
+
+	Removed calls to rgl library in examples; there seems
+	to be some incompatibility.  Also improved "add=" option
+	to boat3d.
+
+Version 0.8
+
+	Added namespace to main branch. This breaks R 1.8.x compatibility, so not
+	done in this version. 
+
 Version 0.7.1
 
         Mods for compatibility with R 1.9

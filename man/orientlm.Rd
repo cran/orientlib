@@ -71,7 +71,7 @@ obs <- t(A1) \%*\% trueorientation \%*\% A2 \%*\% noise
 
 fit <- orientlm(obs, ~ x + y, trueorientation, ~ 1)
 
-context <- boat3d(A1, x, z=y, col = 'green')
+context <- boat3d(A1, x, z=y, col = 'green', graphics='scatterplot3d')
 boat3d(fit$A1, x, z=y, add=context)
 }
 \keyword{ regression }% at least one, from doc/KEYWORDS

@@ -1,5 +1,9 @@
 Release history for orientlib:
 
+Version 0.8.2
+
+	Minor typo in Rd file.
+
 Version 0.8.1
 
 	Removed calls to rgl library in examples; there seems

@@ -1,14 +1,17 @@
+%*%,orientation,orientation-method
+                        Methods for matrix operations in 'orientlib'
+[,rotmatrix-method      Methods for indexing orientations
 boat3d                  Draw boat glyphs for orientation data
-coerce-methods          Methods for Function coerce in Package
+coerce,matrix,orientation-method
+                        Methods for Function coerce in Package
                         'orientlib'
 eulerzxz                Create an orientation using Euler angles
 eulerzyx                Create an orientation using Euler angles
-index-methods           Methods for indexing orientations
-length-methods          Length of orientation object
+length,rotmatrix-method
+                        Length of orientation object
 matrix-classes          Matrix orientation classes
-matrix-methods          Methods for matrix operations in 'orientlib'
 mean-methods            Methods for calculating the mean
-nearest                 Find nearest SO(3) or orthogonal matrix.
+nearest.SO3             Find nearest SO(3) or orthogonal matrix.
 orientation-class       Class "orientation"
 orientlib               Orientation Library
 orientlm                Linear models for orientation data

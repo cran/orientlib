@@ -1,6 +1,6 @@
 \name{matrix-methods}
 \docType{methods}
-\alias{%*%,orientation,orientation-method}
+\alias{\%*\%,orientation,orientation-method}
 \alias{t,orientation-method}
 \alias{^,orientation,numeric-method}
 \title{ Methods for matrix operations in `orientlib' }

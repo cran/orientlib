@@ -1,5 +1,6 @@
 \name{quaternion}
 \alias{quaternion}
+\alias{quaternion,orientation-method}
 \title{ Create an orientation using quaternions }
 \description{
   Creates a \code{\link{quaternion-class}} object.

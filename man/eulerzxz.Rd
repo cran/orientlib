@@ -1,5 +1,6 @@
 \name{eulerzxz}
 \alias{eulerzxz}
+\alias{eulerzxz,orientation,missing,missing-method}
 \title{ Create an orientation using Euler angles }
 \description{
   Creates an \code{\link{eulerzxz-class}} object.

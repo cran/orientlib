@@ -1,5 +1,6 @@
 \name{rotvector}
 \alias{rotvector}
+\alias{rotvector,orientation-method}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Create an orientation using vectorized 3x3 matrices }
 \description{
@@ -9,7 +10,7 @@
 rotvector(m)
 }
 \arguments{
-  \item{m}{ n x 9 matrix or 9 element vector whose rows are vectorized 3x3 matrices.}
+  \item{m}{ n x 9 matrix or 9 element vector whose rows are vectorized 3x3 matrices, or an orientation object.}
 }
 \details{
 Converts a matrix whose rows are vectorized 3x3 matrices (in column-major form)

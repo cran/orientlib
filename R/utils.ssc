@@ -1,12 +1,12 @@
 rotation.angle <- function(x) {
-    x <- rotmatrix(x)@x
+    x <- as(x,'rotmatrix')@x
     apply(x,3,function(A) acos((sum(diag(A)) - 1)/2))
 }
 
 rotation.distance <- function(x, y)
 {
-    	x <- rotmatrix(x)@x
-    	y <- rotmatrix(y)@x
+    	x <- as(x,'rotmatrix')@x
+    	y <- as(y,'rotmatrix')@x
     	sapply(1:dim(x)[3],
 	    function(i) { 
 	   	trace <- sum(x[,,i] * y[,,i])

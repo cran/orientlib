@@ -1,4 +1,3 @@
-require(methods)
 
 # The orientation class is an abstract class; the different representations
 # below descend from it
@@ -61,10 +60,10 @@ setMethod('weighted.mean', c(x = 'orientation', w = 'numeric', na.rm = 'missing'
 )
 
 setAs('matrix', 'orientation',
-    def = function(from, to) rotmatrix(from) )
+    def = function(from) rotmatrix(from) )
     
 setAs('array', 'orientation',
-    def = function(from, to) rotmatrix(from) ) 
+    def = function(from) rotmatrix(from) ) 
     
 # The rotmatrix class is an 3 x 3 x n array holding rotation matrices
 
@@ -126,7 +125,7 @@ setMethod('rotvector', 'orientation',
 )
 
 setAs('orientation', 'rotvector',
-    def = function(from, to) {
+    def = function(from) {
 	x <- as(from, 'rotmatrix')
 	new('rotvector', x = cbind(x@x[1,1,],x@x[2,1,],x@x[3,1,],
 				   x@x[1,2,],x@x[2,2,],x@x[3,2,],
@@ -135,7 +134,7 @@ setAs('orientation', 'rotvector',
 )
 
 setAs('rotvector', 'rotmatrix',
-    def = function(from, to) rotmatrix(array(t(from@x), c(3,3,nrow(from@x)))))
+    def = function(from) rotmatrix(array(t(from@x), c(3,3,nrow(from@x)))))
     
 setMethod('[', 'rotvector',
     function(x, i, j, ..., drop) rotvector(x@x[i,,drop=FALSE])
@@ -190,7 +189,7 @@ setAs('matrix', 'eulerzyx',
 )
 
 setAs('orientation', 'eulerzyx',
-    def = function(from, to) {
+    def = function(from) {
 	x <- as(from, 'rotmatrix')@x
     	C <- 1-x[1,3,]^2
     	zeros <- zapsmall(C) == 0
@@ -204,7 +203,7 @@ setAs('orientation', 'eulerzyx',
 )
 
 setAs('eulerzyx', 'rotmatrix',
-    def = function(from, to) {
+    def = function(from) {
 	x <- from@x
     	psi <- x[,1]    
     	theta <- x[,2]    
@@ -265,7 +264,7 @@ setMethod('quaternion', 'orientation',
 )
 
 setAs('quaternion', 'rotmatrix',
-    def = function(from, to) {
+    def = function(from) {
 	x <- from@x
      	rotmatrix(aperm(array(c(1-2*x[,2]^2-2*x[,3]^2, 
     		      2*x[,1]*x[,2]-2*x[,3]*x[,4],
@@ -282,7 +281,7 @@ setAs('quaternion', 'rotmatrix',
 )	
 
 setAs('orientation', 'quaternion',
-    def = function(from, to) {
+    def = function(from) {
 	nicesqrt <- function(x) sqrt(pmax(x,0))
 	x <- as(from, 'rotmatrix')@x
     	q4 <- nicesqrt((1 + x[1,1,] + x[2,2,] + x[3,3,])/4)  # may go negative by rounding
@@ -340,7 +339,7 @@ setMethod('skewvector', 'orientation',
 )
 
 setAs('skewvector', 'quaternion',
-    def = function(from, to) {
+    def = function(from) {
 	x <- from@x
         theta <- apply(x, 1, function(row) sqrt(sum(row^2)))
         w <- cos(theta/2)
@@ -355,13 +354,13 @@ setAs('skewvector', 'quaternion',
 )
 
 setAs('skewvector', 'rotmatrix',
-    def = function(from, to) {
+    def = function(from) {
 	as(as(from, 'quaternion'), 'rotmatrix')    		      
      }
 )	
 
 setAs('orientation', 'skewvector',
-    def = function(from, to) {
+    def = function(from) {
 	x <- as(from, 'quaternion')@x
     	theta <- 2*acos(x[,4])
     	skewvector(x[,-4]*ifelse(abs(theta)>1.e-4, theta/sqrt(pmax(1-x[,4]^2,0)), 1))
@@ -415,7 +414,7 @@ setMethod('skewmatrix', 'orientation',
 )
 
 setAs('skewmatrix', 'skewvector',
-    def = function(from, to) {
+    def = function(from) {
 	x <- from@x
 	x <- cbind(x[2,3,],x[3,1,],x[1,2,])
 	skewvector(x)
@@ -423,13 +422,13 @@ setAs('skewmatrix', 'skewvector',
 )
 
 setAs('skewmatrix', 'rotmatrix',
-    def = function(from, to) {
+    def = function(from) {
 	as(as(from, 'skewvector'), 'rotmatrix')    		      
      }
 )	
 
 setAs('orientation', 'skewmatrix',
-    def = function(from, to) {
+    def = function(from) {
 	x <- skewvector(from)@x
 	n <- nrow(x)
     	x <- aperm(array(c(rep(0,n), x[,3], -x[,2], -x[,3], rep(0,n), x[,1], x[,2], -x[,1], rep(0,n)), c(n, 3, 3)))
@@ -484,14 +483,14 @@ setMethod('eulerzxz', c('orientation','missing','missing'),
 )
 
 setAs('matrix', 'eulerzxz',
-    def = function(from, to) {
+    def = function(from) {
     	stopifnot(ncol(from) == 3)
     	new('eulerzxz', x = from)
     }
 )
 
 setAs('orientation', 'eulerzxz',
-    def = function(from, to) {
+    def = function(from) {
 	x <- as(from, 'rotmatrix')@x
     	C <- x[3,2,]^2 + x[3,1,]^2
     	zeros <- zapsmall(C) == 0
@@ -507,7 +506,7 @@ setAs('orientation', 'eulerzxz',
 )
 
 setAs('eulerzxz', 'rotmatrix',
-    def = function(from, to) {
+    def = function(from) {
 	x <- from@x
     	phi <- x[,1]    
     	theta <- x[,2]    

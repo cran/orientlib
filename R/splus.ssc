@@ -1,0 +1,20 @@
+stopifnot <- function(...) {
+	conditions <- list(...)
+	if (!all(unlist(conditions))) stop(paste('Conditions not met:',deparse(match.call())))
+}
+
+'colnames<-' <- function(x, value)
+{
+	dimnames(x)[[2]] <- value
+	x
+}
+
+La.svd <- function(mat) { 
+	result <- svd(mat)
+	result$vt <- t(result$v)
+	result
+}
+
+which.min <- function(x) which(x <= min(x))
+
+atan2 <- function(y, x) atan(y, x)

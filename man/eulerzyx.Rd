@@ -1,5 +1,6 @@
 \name{eulerzyx}
 \alias{eulerzyx}
+\alias{eulerzyx,orientation,missing,missing-method}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Create an orientation using Euler angles }
 \description{

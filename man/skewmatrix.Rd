@@ -1,5 +1,6 @@
 \name{skewmatrix}
 \alias{skewmatrix}
+\alias{skewmatrix,orientation-method}
 \title{ Create an orientation using the entries in a skew-symmetric matrix representation }
 \description{
   Creates a \code{\link{skewmatrix-class}} object.

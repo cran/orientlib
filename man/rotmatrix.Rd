@@ -1,5 +1,6 @@
 \name{rotmatrix}
 \alias{rotmatrix}
+\alias{rotmatrix,orientation-method}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Create an orientation using Euler angles }
 \description{
@@ -10,7 +11,7 @@ rotmatrix(a)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{ A 3 x 3 matrix or 3 x 3 x n array of matrices }
+  \item{a}{ A 3 x 3 matrix or 3 x 3 x n array of matrices or an orientation object. }
 }
 \value{
 A \code{\link{rotmatrix-class}} object.

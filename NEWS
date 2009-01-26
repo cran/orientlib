@@ -1,5 +1,13 @@
 Release history for orientlib:
 
+Version 0.9.1
+
+	Changed contact email address.
+	
+Version 0.9
+
+	Dropped support for djmrgl package.
+	
 Version 0.8.2
 
 	Minor typo in Rd file.

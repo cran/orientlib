@@ -23,7 +23,7 @@ SO(3) or orthogonal matrix to a given matrix.
 
 \code{nearest.orthog} produces a 3 x 3 x n array of orthogonal matrices.
 }
-\references{ Stephens (1979).  Vector correlation.  {\em Biometrika} 66, 41-48.}
+\references{ Stephens (1979).  Vector correlation.  \emph{Biometrika} 66, 41-48.}
 \author{ Duncan Murdoch }
 
 \seealso{\code{\link{orientation-class}}}

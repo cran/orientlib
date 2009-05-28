@@ -1,81 +1,64 @@
 Release history for orientlib:
 
-Changes in version 0.10.2
+Version 0.10.1
 
-	- Changed format of NEWS file to be news() compatible.
-	- Fixed help link errors.
+	Changed signature of weighted.mean to match R 2.10.x changes.
 
-Changes in version 0.10.1
+Version 0.9.1
 
-	- Changed signature of weighted.mean to match R 2.10.x changes.
+	Changed contact email address.
 	
-Changes in version 0.9.3
- 
-        - Backporting some 0.10.2 changes.
+Version 0.9
 
-Changes in version 0.9.2
-
-	- Cleanup, back porting some 0.10.1 changes for R 2.9.x compatibility.
-
-Changes in version 0.9.1
-
-	- Changed signature of weighted.mean to match R 2.10.x changes.
+	Dropped support for djmrgl package.
 	
-Changes in version 0.9.3
+Version 0.8.2
 
- 	- Back porting of 0.10.2 changes.
+	Minor typo in Rd file.
 
-Changes in version 0.9.2
+Version 0.8.1
 
-	- Cleanup, back porting some 0.10.1 changes for R 2.9.x compatibility.
-
-Changes in version 0.9.1
-
-	- Changed contact email address.
-	
-Changes in version 0.9
-
-	- Dropped support for djmrgl package.
-	
-Changes in version 0.8.2
-
-	- Minor typo in Rd file.
-
-Changes in version 0.8.1
-
-	- Removed calls to rgl library in examples; there seems
+	Removed calls to rgl library in examples; there seems
 	to be some incompatibility.  Also improved "add=" option
 	to boat3d.
 
-Changes in version 0.8
+Version 0.8
 
-	- Added namespace. This breaks R 1.8.x compatibility; sorry! 
+	Added namespace. This breaks R 1.8.x compatibility; sorry! 
 
-Changes in version 0.7.1
+Version 0.7.1
 
-        - Mods for compatibility with R 1.9
+        Mods for compatibility with R 1.9
 	
-Changes in version 0.7
+Version 0.7
 
-	- Modifications to coincide with JSS paper
+	Modifications to coincide with JSS paper
 
-Changes in version 0.4
+Version 0.4
 
-	- First release to CRAN
+	First release to CRAN
 
-Changes in version 0.2
+Version 0.2
 
-	- Added mean and weighted.mean.
- 	- Made orientation descend from vector.
-	- Added [[ methods.
-	- Changed default look of boats.
-	- Made rotmatrix etc. into convfunctions between
+	Added mean and weighted.mean.
+
+ 	Made orientation descend from vector.
+
+	Added [[ methods.
+
+	Changed default look of boats.
+
+	Made rotmatrix etc. into conversion functions between
 	orientation types.
-	- Added eulerzxz class.
-	- Added various parameters to boat3d.
-	- Added orientlm regression function plus transpose t() method.
+	
+	Added eulerzxz class.
 
-Changes in version 0.1
+	Added various parameters to boat3d.
 
-	- First release.
+	Added orientlm regression function plus transpose t() method.
+
+
+Version 0.1
+
+	First release.
 

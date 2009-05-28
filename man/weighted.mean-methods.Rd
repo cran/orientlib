@@ -2,15 +2,15 @@
 \docType{methods}
 \title{ Weighted mean method }
 \alias{weighted.mean-methods}
-\alias{weighted.mean,ANY,ANY,ANY-method}
-\alias{weighted.mean,orientation,numeric,missing-method}
+\alias{weighted.mean,ANY,ANY-method}
+\alias{weighted.mean,orientation,numeric-method}
 \description{The weighted mean function. }
 
 \section{Methods}{\describe{
 
-\item{x = "ANY", w = "ANY", na.rm = "ANY"}{ the standard \code{stats::\link[stats]{weighted.mean}} }
+\item{x = "ANY", w = "ANY"}{ the standard \code{stats::\link[stats]{weighted.mean}} }
 
-\item{x = "orientation", w = "numeric", na.rm = "missing"}{ weighted mean for orientations }
+\item{x = "orientation", w = "numeric"}{ weighted mean for orientations }
 
 }}
 

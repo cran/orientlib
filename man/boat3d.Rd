@@ -27,7 +27,7 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
   The (x,y,z) coordinate appears in the middle of the sail, at the
   top of the gunwales of the boat.
   
-  If the \code{\link[rgl:rgl-package]{rgl}} package is 
+  If the \code{\link[rgl]{rgl}} package is 
   installed, it will be used to draw solid faces on the boats which can be moved by the
   user.  If not, but the \code{\link[scatterplot3d]{scatterplot3d}} package is
   installed, it will be used to draw fixed wireframe boats.  This
@@ -36,7 +36,7 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
   Additional graphics parameters may be passed.  If \code{\link[scatterplot3d]{scatterplot3d}} is used, these
   are passed to the \code{\link[scatterplot3d]{scatterplot3d}} function (and ignored
   when adding to an existing plot).  Extra parameters are not passed to
-  \code{\link[rgl:rgl-package]{rgl}}.
+  \code{\link[rgl]{rgl}}.
   
   To add to a \code{\link[scatterplot3d]{scatterplot3d}} plot, you must pass the 
   return value from the initial plot as the value of \code{add}.  See
@@ -44,12 +44,12 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
 }
 \value{
   A current
-  plot number for \code{\link[rgl:rgl-package]{rgl}}, or a \code{\link[scatterplot3d]{scatterplot3d}} 
+  plot number for \code{\link[rgl]{rgl}}, or a \code{\link[scatterplot3d]{scatterplot3d}} 
   drawing context.  In any case, an attribute named \code{graphics} is added
   to indicate the drawing device type.
 }
 \author{ Duncan Murdoch }
-\note{ Requires the \code{\link[rgl:rgl-package]{rgl}} or 
+\note{ Requires the \code{\link[rgl]{rgl}} or 
 \code{\link[scatterplot3d]{scatterplot3d}} package. }
 
 \examples{

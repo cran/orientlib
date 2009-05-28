@@ -52,7 +52,7 @@ setMethod('mean', 'orientation',
     }
 )
 
-setMethod('weighted.mean', c(x = 'orientation', w = 'numeric', na.rm = 'missing'),
+setMethod('weighted.mean', c(x = 'orientation', w = 'numeric'),
     function(x,w) {
 	stopifnot(length(x) == length(w))
 	x <- rotmatrix(x)@x

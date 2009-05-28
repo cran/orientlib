@@ -7,7 +7,7 @@
 \usage{
 boat3d(orientation, x = 1:length(orientation), y = 0, 
        z = 0, scale = 0.25, col = 'red', add = FALSE, box = FALSE, axes = TRUE,
-       graphics = c('djmrgl', 'rgl', 'scatterplot3d'), ...)
+       graphics = c('rgl', 'scatterplot3d'), ...)
 }
 \arguments{
   \item{orientation}{ An \code{\link{orientation}} object to be shown. }
@@ -27,15 +27,13 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
   The (x,y,z) coordinate appears in the middle of the sail, at the
   top of the gunwales of the boat.
   
-  If either the \code{\link[djmrgl]{djmrgl}} or \code{\link[rgl]{rgl}} package is 
+  If the \code{\link[rgl]{rgl}} package is 
   installed, it will be used to draw solid faces on the boats which can be moved by the
   user.  If not, but the \code{\link[scatterplot3d]{scatterplot3d}} package is
   installed, it will be used to draw fixed wireframe boats.  This
   search order can be changed by modifying the \code{graphics} parameter.
   
-  Additional graphics parameters may be passed.  If \code{\link[djmrgl]{djmrgl}}
-  graphics is used, then these are passed to \code{\link[djmrgl]{par3d}} before
-  the plotting is done; if \code{\link[scatterplot3d]{scatterplot3d}} is used, these
+  Additional graphics parameters may be passed.  If \code{\link[scatterplot3d]{scatterplot3d}} is used, these
   are passed to the \code{\link[scatterplot3d]{scatterplot3d}} function (and ignored
   when adding to an existing plot).  Extra parameters are not passed to
   \code{\link[rgl]{rgl}}.
@@ -45,13 +43,13 @@ boat3d(orientation, x = 1:length(orientation), y = 0,
   the \code{\link{orientlm}} function for an example.
 }
 \value{
-  A \code{\link[djmrgl]{djmrgl}} handle for the graphics display, a current
+  A current
   plot number for \code{\link[rgl]{rgl}}, or a \code{\link[scatterplot3d]{scatterplot3d}} 
   drawing context.  In any case, an attribute named \code{graphics} is added
   to indicate the drawing device type.
 }
 \author{ Duncan Murdoch }
-\note{ Requires the \code{\link[djmrgl]{djmrgl}}, \code{\link[rgl]{rgl}} or 
+\note{ Requires the \code{\link[rgl]{rgl}} or 
 \code{\link[scatterplot3d]{scatterplot3d}} package. }
 
 \examples{
@@ -64,11 +62,6 @@ text(s$xyz.convert(0:3, rep(-0.5,4), rep(-0.5,4)),
      label = c('Id','z','y','x'))
          
 \dontrun{
-
-# if the djmrgl package is loaded, this code will work
-         
-boat3d(x, 0:3, axes = FALSE)
-axis3d('yz',at=0:3,labels=c('Id','z','y','x'))
 
 # if the rgl package is loaded, this code will work
 

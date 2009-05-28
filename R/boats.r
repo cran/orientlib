@@ -1,6 +1,6 @@
 boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0.25,
                    col = 'red', add = FALSE, box = FALSE, axes = TRUE, 
-                   graphics = c('djmrgl', 'rgl', 'scatterplot3d'), ...) {
+                   graphics = c('rgl', 'scatterplot3d'), ...) {
     if (!missing(add) && missing(graphics)) graphics <- attr(add, 'graphics')
     orientation <- as(orientation, 'rotmatrix')
     len <- length(orientation)
@@ -19,49 +19,21 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
     qz <- c( 1, 0, 0,  1, 1,  0, 0, 1)-1
     
     graphics <- basename(.find.package(graphics, quiet = TRUE))
-    if (!length(graphics)) stop('Need 3D renderer:  djmrgl, rgl, or scatterplot3d')
+    if (!length(graphics)) stop('Need 3D renderer:  rgl or scatterplot3d')
     graphics <- graphics[1]
     require(graphics, character.only = TRUE)
     
-    if (graphics == 'djmrgl') {		   
-	par3d(autoscale = FALSE)
-	skip <- par3d(skipredraw = TRUE, ...)
-	on.exit(par3d(skip))
-
-	if (is.logical(add)) {
-	    handle <- ThreeDHandle
-	    if (!add) clear3d()
-    	} else handle <- add
-	
-    	g <- integer(length(x))
-    	
-	for (i in 1:length(x)) {
-	    oldg <- begingroup3d(scale3d(scale[i], scale[i], scale[i]) 
-			  %*% rotate3d(matrix = orientation@x[,,i]) 
-			  %*% translate3d(x[i], y[i], z[i]), handle = handle)
-	    triangles3d(tx, ty, tz, col=col[i], handle = handle)
-	    quads3d(qx, qy, qz, col=col[i], handle = handle)
-	    g[i] <- endgroup3d(oldg, handle = handle)
-	}
-	if (!add) {
-	    if (box) box3d(handle = handle)
-	    if (axes) axes3d(handle = handle)
-	}
-	class(g) <- 'obj3d'
-	bringToTop3d(handle = handle)
-	attr(handle, 'graphics') <- 'djmrgl'
-	invisible(handle)
-    } else if (graphics == 'rgl') {
+    if (graphics == 'rgl') {
 	if (is.logical(add)) {
 	    if (!add) {
 		if (is.null(rgl.cur())) {
-		    rgl.open()
+		    open3d()
 		}
 		else 
 		{
-		    rgl.clear()
+		    clear3d()
 		}
-		rgl.bg(col='white')
+		bg3d(col='white')
 	    }
     	}	
 	else rgl.set(add)	
@@ -73,7 +45,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    newv[1,] <- newv[1,] + x[i]
 	    newv[2,] <- newv[2,] + y[i]
 	    newv[3,] <- newv[3,] + z[i]
-	    rgl.triangles(newv[1,],newv[2,],newv[3,],col=col[i])
+	    triangles3d(newv[1,],newv[2,],newv[3,],col=col[i])
 	}
 	
 	verts <- rbind(qx,qy,qz)
@@ -83,10 +55,9 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    newv[1,] <- newv[1,] + x[i]
 	    newv[2,] <- newv[2,] + y[i]
 	    newv[3,] <- newv[3,] + z[i]
-	    rgl.material(col=col[i])
-	    rgl.quads(newv[1,],newv[2,],newv[3,],col=col[i])
+	    quads3d(newv[1,],newv[2,],newv[3,],col=col[i])
 	}
-	if (axes) rgl.bbox(col='grey')
+	if (axes) decorate3d()
 	context <- rgl.cur()
 	attr(context, 'graphics') <- 'rgl'
 	invisible(context)
@@ -131,6 +102,6 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	attr(splot, 'graphics') <- 'scatterplot3d'
 	invisible(splot)
     } else
-    	stop('Need djmrgl, rgl or scatterplot3d')
+    	stop('Need rgl or scatterplot3d')
 }
 

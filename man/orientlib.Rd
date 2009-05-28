@@ -28,10 +28,15 @@
 
 \section{Release History}{
 \itemize{
-\item{Versions 0.3, 0.4, 0.5}{
+\item{Version 0.9}{
+\itemize{
+\item{-}{Added CITATION file, dropped djmrgl support.}
+}}
+
+\item{Versions 0.3 to 0.8}{
 \itemize{
 
-\item{-}{Changes for CRAN compliance.}
+\item{-}{Changes for CRAN compliance and minor corrections.}
 }}
 
 \item{Version 0.2}{
@@ -67,8 +72,8 @@ orientation types.}
 }
 
 \author{ Duncan Murdoch }
-\note{ Plots require one of the \code{\link[djmrgl]{djmrgl}}, \code{\link[rgl]{rgl}}, 
-or \code{\link[scatterplot3d]{scatterplot3d}} libraries. }
+\note{ Plots require either the \code{\link[rgl]{rgl}}
+or \code{\link[scatterplot3d]{scatterplot3d}} package. }
 
 
 \keyword{ hplot }% at least one, from doc/KEYWORDS

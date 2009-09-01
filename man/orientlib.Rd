@@ -59,7 +59,7 @@ orientation types.}
 
 \item{-}{Added \code{\link{orientlm}} regression function plus transpose \code{t()} method.}
 
-\item{-}{Added \code{\link[rgl]{rgl}} and \code{\link[scatterplot3d]{scatterplot3d}} support to \code{\link{boat3d}} function.}
+\item{-}{Added \code{\link[rgl:rgl-package]{rgl}} and \code{\link[scatterplot3d]{scatterplot3d}} support to \code{\link{boat3d}} function.}
 
 \item{-}{Added \code{\link{skewmatrix}}.}
 }}
@@ -72,7 +72,7 @@ orientation types.}
 }
 
 \author{ Duncan Murdoch }
-\note{ Plots require either the \code{\link[rgl]{rgl}}
+\note{ Plots require either the \code{\link[rgl:rgl-package]{rgl}}
 or \code{\link[scatterplot3d]{scatterplot3d}} package. }
 
 

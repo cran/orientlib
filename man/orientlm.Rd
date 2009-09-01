@@ -47,8 +47,8 @@ global minimum; this function presumably suffers from the same failing.
 }
 \value{
   Returns a list containing the following components:
-  \item{leftfit }{Result of \code{\link[base]{lm}} call based on \code{leftformula}}
-  \item{rightfit }{Result of \code{\link[base]{lm}} call based on \code{rightformula}}
+  \item{leftfit }{Result of \code{\link[stats]{lm}} call based on \code{leftformula}}
+  \item{rightfit }{Result of \code{\link[stats]{lm}} call based on \code{rightformula}}
   \item{A1 }{Fitted values of \eqn{A_1}{A1} for each observation}
   \item{A2 }{Fitted values of \eqn{A_2}{A2} for each observation}
   \item{predict}{Fitted values of \eqn{A_1^t U_i A_2}{t(A1) \%*\% Ui \%*\% A2} for each observation}

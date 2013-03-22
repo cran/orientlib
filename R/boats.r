@@ -18,7 +18,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
     qy <- c( 4, 4, 1, 1.5,1.5,1, 4, 4)-2
     qz <- c( 1, 0, 0,  1, 1,  0, 0, 1)-1
     
-    graphics <- basename(.find.package(graphics, quiet = TRUE))
+    graphics <- basename(find.package(graphics, quiet = TRUE))
     if (!length(graphics)) stop('Need 3D renderer:  rgl or scatterplot3d')
     graphics <- graphics[1]
     require(graphics, character.only = TRUE)

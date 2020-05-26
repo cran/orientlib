@@ -21,22 +21,22 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
     graphics <- basename(find.package(graphics, quiet = TRUE))
     if (!length(graphics)) stop('Need 3D renderer:  rgl or scatterplot3d')
     graphics <- graphics[1]
-    require(graphics, character.only = TRUE)
+    requireNamespace(graphics, character.only = TRUE)
     
     if (graphics == 'rgl') {
 	if (is.logical(add)) {
 	    if (!add) {
-		if (is.null(rgl.cur())) {
-		    open3d()
+		if (is.null(rgl::rgl.cur())) {
+		    rgl::open3d()
 		}
 		else 
 		{
-		    clear3d()
+		    rgl::clear3d()
 		}
-		bg3d(col='white')
+		rgl::bg3d(col='white')
 	    }
     	}	
-	else rgl.set(add)	
+	else rgl::rgl.set(add)	
 	nx <- length(x)	
 	verts <- rbind(tx,ty,tz)
 	for (i in 1:nx) {
@@ -45,7 +45,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    newv[1,] <- newv[1,] + x[i]
 	    newv[2,] <- newv[2,] + y[i]
 	    newv[3,] <- newv[3,] + z[i]
-	    triangles3d(newv[1,],newv[2,],newv[3,],col=col[i])
+	    rgl::triangles3d(newv[1,],newv[2,],newv[3,],col=col[i])
 	}
 	
 	verts <- rbind(qx,qy,qz)
@@ -55,10 +55,10 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    newv[1,] <- newv[1,] + x[i]
 	    newv[2,] <- newv[2,] + y[i]
 	    newv[3,] <- newv[3,] + z[i]
-	    quads3d(newv[1,],newv[2,],newv[3,],col=col[i])
+	    rgl::quads3d(newv[1,],newv[2,],newv[3,],col=col[i])
 	}
-	if (axes) decorate3d()
-	context <- rgl.cur()
+	if (axes) rgl::decorate3d()
+	context <- rgl::rgl.cur()
 	attr(context, 'graphics') <- 'rgl'
 	invisible(context)
     }
@@ -88,7 +88,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	ylim <- mean(range(p[2,]))+c(-range/2,range/2)
 	zlim <- mean(range(p[3,]))+c(-range/2,range/2)
 	if (is.logical(add)) {
-	    if (!add) splot <- scatterplot3d(t(p),type='n',xlim=xlim, ylim=ylim, zlim=zlim, box=box, axis=axes, ...)
+	    if (!add) splot <- scatterplot3d::scatterplot3d(t(p),type='n',xlim=xlim, ylim=ylim, zlim=zlim, box=box, axis=axes, ...)
 	    else stop('Must set add to result of previous call to add to boat3d plot.')
 	}
 	else splot <- add

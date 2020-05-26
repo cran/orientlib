@@ -1,5 +1,5 @@
 import(methods)
-importFrom(stats,weighted.mean)
+importFrom(stats,lm, model.matrix, weighted.mean)
 
 export("boat3d",
 	"eulerzxz",

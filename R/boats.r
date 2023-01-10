@@ -21,12 +21,12 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
     graphics <- basename(find.package(graphics, quiet = TRUE))
     if (!length(graphics)) stop('Need 3D renderer:  rgl or scatterplot3d')
     graphics <- graphics[1]
-    requireNamespace(graphics, character.only = TRUE)
+    requireNamespace(graphics)
     
     if (graphics == 'rgl') {
 	if (is.logical(add)) {
 	    if (!add) {
-		if (is.null(rgl::rgl.cur())) {
+		if (!rgl::cur3d()) {
 		    rgl::open3d()
 		}
 		else 
@@ -36,7 +36,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 		rgl::bg3d(col='white')
 	    }
     	}	
-	else rgl::rgl.set(add)	
+	else rgl::set3d(add)	
 	nx <- length(x)	
 	verts <- rbind(tx,ty,tz)
 	for (i in 1:nx) {
@@ -58,7 +58,7 @@ boat3d <- function(orientation, x=1:length(orientation), y = 0, z = 0, scale = 0
 	    rgl::quads3d(newv[1,],newv[2,],newv[3,],col=col[i])
 	}
 	if (axes) rgl::decorate3d()
-	context <- rgl::rgl.cur()
+	context <- rgl::cur3d()
 	attr(context, 'graphics') <- 'rgl'
 	invisible(context)
     }

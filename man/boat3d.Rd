@@ -63,10 +63,10 @@ text(s$xyz.convert(0:3, rep(-0.5,4), rep(-0.5,4)),
          
 \dontrun{
 
-# if the rgl package is loaded, this code will work
+# if the rgl package is installed, this code will work
 
 boat3d(x, 0:3, axes = FALSE, graphics = 'rgl')
-rgl.bbox(xat=0:3,xlab=c('Id','z','y','x'),yat=1,zat=1,color='grey')  
+rgl::bbox3d(xat=0:3,xlab=c('Id','z','y','x'),yat=1,zat=1,color='grey')  
 }
 }
 \keyword{ hplot }% at least one, from doc/KEYWORDS

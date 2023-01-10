@@ -1,8 +1,13 @@
 Release history for orientlib:
 
+Changes in Version 0.10.5
+
+        - Changes for rgl 1.0.0 compatibility.
+
 Changes in Version 0.10.4
 
         - Changes for R 4.0.0 compatibility.
+        - Changed maintainer address.
         
 Changes in Version 0.10.3
 
